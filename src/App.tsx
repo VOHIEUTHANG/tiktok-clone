@@ -7,17 +7,6 @@ function App() {
    return (
       <Router>
          <div className="App">
-            <ul>
-               <li>
-                  <Link to="/">Home</Link>
-               </li>
-               <li>
-                  <Link to="/following">Following</Link>
-               </li>
-               <li>
-                  <Link to="/upload">Upload</Link>
-               </li>
-            </ul>
             <Routes>
                {publicRoute.map((route, i) => {
                   const Layout = route.layout ?? DefaultLayout;
