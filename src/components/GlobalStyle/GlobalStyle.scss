@@ -1,5 +1,7 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+$sidebar-width: 356px;
+$primari-color: rgb(254, 44, 85);
 :root {
    --primary: #fe2c55;
    --secondary: ;
@@ -21,44 +23,204 @@ body {
 }
 
 .container {
-   max-width: 1200px;
+   max-width: 1200px !important;
    margin: 0 auto;
 }
 .content {
    min-height: 100vh;
-   background: lightblue;
    flex: 1;
 }
 
 .sidebar-container {
-   width: 356px;
+   width: $sidebar-width;
    flex-shrink: 0;
    flex-grow: 0;
    padding: 0 8px;
-   background: gray;
-}
-
-.sidebar-container:hover .side-scroll::-webkit-scrollbar {
-   width: 6px;
-}
-.sidebar-container .side-scroll {
-   position: fixed;
-   width: 356px;
-   overscroll-behavior-y: contain;
-   overflow: hidden scroll;
-   height: 100vh;
-   transition: all 0.2s linear;
-}
-.sidebar-container .side-scroll::-webkit-scrollbar {
-   width: 0px;
-}
-.sidebar-container .side-scroll::-webkit-scrollbar-track {
    background: white;
-}
-.sidebar-container .side-scroll::-webkit-scrollbar-thumb {
-   background: rgba(22, 24, 35, 0.06);
-   border-radius: 20px;
-}
-.sidebar-container .side-scroll::-webkit-scrollbar-thumb:hover {
-   background: rgba(22, 24, 35, 0.1);
+   &:hover {
+      .side-scroll::-webkit-scrollbar {
+         width: 6px;
+      }
+   }
+   .side-scroll {
+      position: fixed;
+      width: $sidebar-width;
+      overscroll-behavior-y: contain;
+      overflow: hidden scroll;
+      height: 100vh;
+      transition: all 0.2s linear;
+      &::-webkit-scrollbar {
+         width: 0px;
+      }
+      &::-webkit-scrollbar-track {
+         background: white;
+      }
+      &::-webkit-scrollbar-thumb {
+         background: rgba(22, 24, 35, 0.06);
+         border-radius: 20px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+         background: rgba(22, 24, 35, 0.1);
+      }
+   }
+   .sidebar {
+      padding-top: 20px;
+      margin-bottom: 8px;
+      .nav-item {
+         display: block;
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         padding: 8px;
+         transition: all 0.2s linear;
+         color: #333;
+         &:hover {
+            background: rgba(22, 24, 35, 0.03);
+         }
+         &.active {
+            color: #fe2c55;
+            background: rgba(22, 24, 35, 0.03);
+            & > .nav-icon {
+               fill: #fe2c55;
+            }
+         }
+         .nav-icon {
+            width: 32px;
+            height: 32px;
+         }
+         .nav-name {
+            font-weight: 600;
+            text-transform: capitalize;
+            line-height: 32px;
+            font-size: 18px;
+            margin-left: 8px;
+         }
+      }
+      .suggested-user-header {
+         padding: 16px 0 8px 0;
+         margin: 0 8px;
+         font-weight: 600;
+         margin-bottom: 0;
+         font-size: 13px;
+         color: rgba(22, 24, 35, 0.75);
+         // line-height: 20px;
+         border-top: 1px solid rgb(230, 223, 223);
+      }
+      .user-list {
+         padding-bottom: 16px;
+         .user-item {
+            display: flex;
+            height: 48px;
+            align-items: center;
+            justify-self: flex-start;
+            padding: 0 8px;
+            &:hover {
+               background: rgba(22, 24, 35, 0.02);
+            }
+            &.no-check i {
+               display: none !important;
+            }
+            .user-avatar {
+               width: 32px;
+               height: 32px;
+               border-radius: 50%;
+               overflow: hidden;
+               & > img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+               }
+            }
+            .user-infos {
+               margin-left: 12px;
+               .user-title {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  h4 {
+                     max-width: 240px;
+                     overflow: hidden;
+                     font-weight: 500;
+                     text-overflow: ellipsis;
+                     font-size: 14px;
+                     color: #444;
+                     line-height: 22px;
+                  }
+                  & > i {
+                     color: rgb(32, 213, 236);
+                     margin-left: 6px;
+                     font-size: 14px;
+                  }
+               }
+               .user-des {
+                  font-size: 11px;
+                  color: rgba(22, 24, 35, 0.75);
+                  line-height: 15px;
+               }
+            }
+         }
+         .user-more {
+            margin-top: 8px;
+            padding: 0 8px;
+            cursor: pointer;
+            & p {
+               color: $primari-color;
+               font-size: 13px;
+               font-weight: 600;
+            }
+         }
+      }
+      .discover-container {
+         position: relative;
+         &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            top: 0px;
+            left: 8px;
+            right: 8px;
+            background-color: #e6dfdf;
+         }
+         padding: 16px 8px 8px 8px;
+         .discover-title {
+            padding-bottom: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(22, 24, 35, 0.75);
+         }
+         .discover-list {
+            .discover-item {
+               padding: 0 8px;
+               border-radius: 25px;
+               display: inline-block;
+               border: 1px solid #ccc;
+               margin: 0 8px 12px 0;
+               .discover-link {
+                  font-size: 13px;
+                  color: #666;
+               }
+               b {
+                  color: black;
+                  font-size: 15px;
+               }
+            }
+         }
+      }
+      .footer-container {
+         padding: 16px 0 24px 0;
+         margin: 0 8px 40px 8px;
+         border-top: 1px solid #e6dfdf;
+         .footer-link {
+            margin: 5px 6px 0 0;
+            font-size: 12px;
+            color: rgba(22, 24, 35, 0.5);
+         }
+         span {
+            font-size: 11px;
+            margin: 5px 6px 0 0;
+            color: rgba(22, 24, 35, 0.5);
+         }
+      }
+   }
 }

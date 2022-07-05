@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomePage = () => {
-   return <div>Home</div>;
+   return <h1 style={{ textAlign: 'center' }}>Home</h1>;
 };
 
 export default HomePage;
