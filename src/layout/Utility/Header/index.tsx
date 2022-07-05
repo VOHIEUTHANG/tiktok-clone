@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import className from 'classnames/bind';
 import images from 'assets/image';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Headless from '@tippyjs/react/headless';
+import AccountComp from '../AccountItem';
 
 const styles = require('./Header.module.scss');
 const cx = className.bind(styles.default);
 
+const SearchResultItem = ({ searchContent }: { searchContent: string }) => {
+   return (
+      <div className={cx('search-result-item')}>
+         <i className="fa-solid fa-magnifying-glass"></i>
+         <span>{searchContent}</span>
+      </div>
+   );
+};
+
 function Header() {
    const [isSearching, setIsSearching] = useState(false);
+   const [searchResult, setSearchResult] = useState<any[]>([]);
    return (
       <div className={cx('header-container')}>
          <div className={cx('header-main', 'container')}>
@@ -17,20 +28,21 @@ function Header() {
                <img src={images.logo.default} alt="" />
             </div>
             <Headless
-               visible={isSearching}
+               visible={searchResult.length > 0 || isSearching}
+               interactive={true}
                onClickOutside={() => {
                   setIsSearching(false);
                }}
                render={(attrs) => (
                   <div className="box" tabIndex={-1} {...attrs}>
-                     <div
-                        onClick={(e) => {
-                           e.stopPropagation();
-                           console.log('123');
-                        }}
-                        className="bg-white z-20 w-[500px] h-[200px] shadow-lg rounded-3xl"
-                     >
-                        Search content
+                     <div className={[cx('popper', 'pt-[8px] w-[363px] z-20 shadow-lg rounded-xl')].join(' ')}>
+                        <SearchResultItem searchContent="title" />
+                        <SearchResultItem searchContent="title123" />
+                        <SearchResultItem searchContent="title456" />
+                        <h3 className="px-[8px] text-2xl select-none my-2">Accounts</h3>
+                        <AccountComp img="https://picsum.photos/id/50/300/300" realName="abc" name="123" href="#" />
+                        <AccountComp img="https://picsum.photos/id/50/300/300" realName="abc" name="123" href="#" />
+                        <AccountComp img="https://picsum.photos/id/50/300/300" realName="abc" name="123" href="#" />
                      </div>
                   </div>
                )}

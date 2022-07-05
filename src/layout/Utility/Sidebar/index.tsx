@@ -1,6 +1,7 @@
 import React from 'react';
 import className from 'classnames/bind';
 import images from 'assets/image';
+import Account from '../AccountItem';
 const styles = require('./Sidebar.module.scss');
 
 const cx = className.bind(styles.default);
@@ -75,7 +76,6 @@ const FooterList = [
       name: 'Community',
    },
 ];
-
 const suggestedAccounts = [
    {
       img: 'https://picsum.photos/id/43/300/300',
@@ -102,22 +102,7 @@ const suggestedAccounts = [
       href: '#',
    },
 ];
-const Account = ({ img, name, realName, href }: { img: string; name: string; realName: string; href?: string }) => {
-   return (
-      <a href={href} className="user-item">
-         <div className="user-avatar">
-            <img src={img} alt="" />
-         </div>
-         <div className="user-infos">
-            <div className="user-title">
-               <h4>{name}</h4>
-               <i className="fas fa-check-circle"></i>
-            </div>
-            <p className="user-des">{realName}</p>
-         </div>
-      </a>
-   );
-};
+
 const DiscoverItem = ({ href, icon, name }: { href: string; icon: string | string[]; name: string }) => {
    return (
       <li className="discover-item">

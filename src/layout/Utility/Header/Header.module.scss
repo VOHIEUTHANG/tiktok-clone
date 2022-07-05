@@ -28,3 +28,26 @@
 .search-input:not(:placeholder-shown) ~ {
    background: red;
 }
+.popper {
+   background: rgb(255, 255, 255);
+   box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+   max-height: min((100vh - 96px) - 60px, 734px);
+   min-height: 200px;
+   overflow: hidden auto;
+}
+
+.search-result-item:hover {
+   background-color: rgba(0, 0, 0, 0.05);
+}
+.search-result-item {
+   padding: 9px 16px;
+   cursor: pointer;
+   display: flex;
+   -webkit-box-align: center;
+   align-items: center;
+   transition: all 0.3s ease;
+}
+.search-result-item > i {
+   color: rgba(0, 0, 0, 0.4);
+   margin-right: 10px;
+}

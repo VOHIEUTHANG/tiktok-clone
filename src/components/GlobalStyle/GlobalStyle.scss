@@ -31,6 +31,42 @@ body {
    flex: 1;
 }
 
+.user-item {
+   display: flex;
+   height: 48px;
+   align-items: center;
+   justify-self: flex-start;
+   padding: 0 8px;
+   transition: all 0.3s ease;
+}
+.user-item:hover {
+   background-color: rgba(0, 0, 0, 0.05);
+}
+.user-avatar {
+   width: 32px;
+   height: 32px;
+   border-radius: 50%;
+   overflow: hidden;
+}
+.user-infos {
+   margin-left: 12px;
+}
+.user-infos .user-title {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+.user-title > i {
+   color: rgb(32, 213, 236);
+   margin-left: 6px;
+   font-size: 14px;
+}
+.user-infos .user-des {
+   font-size: 13px;
+   color: rgba(22, 24, 35, 0.75);
+   line-height: 15px;
+}
+
 .sidebar-container {
    width: $sidebar-width;
    flex-shrink: 0;
@@ -99,9 +135,9 @@ body {
       .suggested-user-header {
          padding: 16px 0 8px 0;
          margin: 0 8px;
-         font-weight: 600;
+         font-weight: 500;
          margin-bottom: 0;
-         font-size: 13px;
+         font-size: 1.4rem;
          color: rgba(22, 24, 35, 0.75);
          // line-height: 20px;
          border-top: 1px solid rgb(230, 223, 223);
@@ -153,7 +189,7 @@ body {
                   }
                }
                .user-des {
-                  font-size: 11px;
+                  font-size: 13px;
                   color: rgba(22, 24, 35, 0.75);
                   line-height: 15px;
                }
