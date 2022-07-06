@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Headless from '@tippyjs/react/headless';
 import AccountComp from '../AccountItem';
+import Button from 'components/Button/Button';
 
 const styles = require('./Header.module.scss');
 const cx = className.bind(styles.default);
@@ -84,7 +85,10 @@ function Header() {
                </div>
             </Headless>
 
-            <div className={cx('nav')}>Nav</div>
+            <div className="flex ">
+               <Button text>+ Upload</Button>
+               <Button primary>Log in</Button>
+            </div>
          </div>
       </div>
    );
